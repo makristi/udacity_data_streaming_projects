@@ -47,7 +47,7 @@ class Station(Producer):
 
     def run(self, train, direction, prev_station_id, prev_direction):
         """Simulates train arrivals at this station"""
-        logger.info("arrival kafka integration incomplete - skipping")
+        #logger.info("arrival kafka integration complete")
         self.producer.produce(
             topic=self.topic_name,
             key={"timestamp": self.time_millis()},

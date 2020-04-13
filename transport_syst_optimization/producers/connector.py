@@ -19,8 +19,7 @@ def configure_connector():
     if resp.status_code == 200:
         logging.debug("connector already created skipping recreation")
         return
-
-    logger.info("connector code not completed skipping connector creation")
+    
     resp = requests.post(
         KAFKA_CONNECT_URL,
         headers={"Content-Type": "application/json"},
@@ -37,16 +36,16 @@ def configure_connector():
                 "connection.user": "cta_admin",
                 "connection.password": "chicago",
                 "table.whitelist": "stations",
-                "mode": "incrementing.column.name",
+                "mode": "incrementing",
                 "incrementing.column.name": "stop_id",
-                "topic.prefix": "udacity.com.km",
-                "poll.interval.ms": "300000",
+                "topic.prefix": "udacity.com.km.jdbc.",
+                "poll.interval.ms": "300000"
             }
         }),
     )
 
+    logger.info(resp)
     resp.raise_for_status()
-    logging.debug("connector created successfully")
     
 
 if __name__ == "__main__":

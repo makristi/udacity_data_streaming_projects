@@ -66,7 +66,7 @@ class Weather(Producer):
     def run(self, month):
         self._set_weather(month)
         
-        logger.info("weather kafka proxy integration incomplete - skipping")
+        #logger.info("weather kafka proxy integration incomplete - skipping")
        
         resp = requests.post(
             f"{Weather.rest_proxy_url}/topics/{Weather.topic_name}",
@@ -82,12 +82,11 @@ class Weather(Producer):
                 }
             )
         )
-                
-       
+          
         resp.raise_for_status()
         
-        logger.debug(
-            "sent weather data to kafka, temp: %s, status: %s",
-            self.temp,
-            self.status.name,
-        )
+        #logger.info(
+        #    "sent weather data to kafka, temp: %s, status: %s",
+        #    self.temp,
+        #    self.status.name,
+        #)

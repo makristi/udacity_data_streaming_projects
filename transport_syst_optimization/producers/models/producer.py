@@ -72,7 +72,7 @@ class Producer:
                     print(e)
                     pass
             
-        logger.info("topic creation kafka integration incomplete - skipping")
+       # logger.info("topic creation kafka integration incomplete - skipping")
 
         
     def time_millis(self):
@@ -83,7 +83,7 @@ class Producer:
         
         self.flush()
         
-        logger.info("producer close incomplete - skipping")
+       # logger.info("producer close incomplete - skipping")
 
     def time_millis(self):
         """Use this function to get the key for Kafka Events"""

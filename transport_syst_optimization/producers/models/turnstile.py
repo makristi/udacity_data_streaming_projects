@@ -26,7 +26,7 @@ class Turnstile(Producer):
             .replace("'", "")
         )
 
-        topic_name =  f"udacity.com.km.turnstile.{station_name}" 
+        topic_name =  f"udacity.com.km.turnstiles" 
         
         super().__init__(
             topic_name, 
@@ -39,7 +39,7 @@ class Turnstile(Producer):
     def run(self, timestamp, time_step):
         """Simulates riders entering through the turnstile."""
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
-        logger.info("turnstile kafka integration incomplete - skipping")
+        #logger.info("turnstile kafka integration incomplete - skipping")
         self.producer.produce(
             topic=self.topic_name,
             key={"timestamp": self.station.time_millis()},
